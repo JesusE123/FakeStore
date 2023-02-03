@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Link from 'next/link'
 import OffCanvas from './OffCanvas'
 import Search from './Search'
-function Navbar({handleChange}:any) {
+function Navbar({handleChange, handleSearch}:any) {
     
     return (
         <div>

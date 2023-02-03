@@ -1,14 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useCart } from 'react-use-cart'
 import Swal from 'sweetalert2'
 import Card from './Card'
+import Datasearch from './Datasearch'
 
 const Cards = ({data}: any) => {
     console.log(data)
     const { addItem }: any = useCart()
     
     return (
-        <div>
+        <div className='grid grid-cols-4 gap-4'>
             {
                 data.map((element:any, index:any) => {
                     return (
@@ -21,9 +22,12 @@ const Cards = ({data}: any) => {
                         image={element.image}
                         additem={addItem}
                         />
+
                     )
                 })
             }
+
+            
         </div>
     )
 }

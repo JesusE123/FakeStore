@@ -1,10 +1,7 @@
 import React, {useState} from 'react'
-import Card from '../components/Card'
-import OffCanvas from '@/components/OffCanvas'
-import Search from '@/components/Search'
 import NavBarLayout from '@/components/NavBarLayout'
-import Swal from 'sweetalert2'
 import Cards from '@/components/Cards'
+import Datasearch from '@/components/Datasearch'
 
 
 
@@ -16,15 +13,14 @@ function Dashboard({posts}:any) {
   const handleChange = (e:any) => {
       setSearch(e.target.value)
   } 
+
+ 
+
  
   return (
     <div className='container-fluid'>     
-        <NavBarLayout handleChange={handleChange}/>
+        <NavBarLayout handleChange={handleChange} />
         <Cards data={posts}/>
-   
-  
-
-      
     </div>
   )
 }

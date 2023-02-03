@@ -4,7 +4,7 @@ import OffCanvas from '@/components/OffCanvas'
 import Search from '@/components/Search'
 
 
-function NavBarLayout({ children,  handleChange }: any) {
+function NavBarLayout({ children,  handleChange,  }: any) {
     
     return (
         <>
