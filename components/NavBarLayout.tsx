@@ -4,12 +4,13 @@ import OffCanvas from '@/components/OffCanvas'
 import Search from '@/components/Search'
 
 
-function NavBarLayout({ children,  handleChange,  }: any) {
+function NavBarLayout({ children, handleChange, filter}: any) {
     
     return (
         <>
            
-            <Navbar handleChange={handleChange}/>
+            <Navbar handleChange={handleChange} filter={filter}/>
+        
             <main>{children}</main>
         </>
     )

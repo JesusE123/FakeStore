@@ -2,13 +2,13 @@ import React, {useState} from 'react'
 import Link from 'next/link'
 import OffCanvas from './OffCanvas'
 import Search from './Search'
-function Navbar({handleChange, handleSearch}:any) {
-    
+function Navbar({ handleChange, filter }:any) {
+  
     return (
         <div>
              <div className='d-flex justify-between py-3 mb-3 bg-blue-400 mt-2 shadow-xl shadow-blue-500'>
                 <h1 className='text-center text-3xl font-bold ms-4'>Bienvenido a Fake Store</h1>
-                <Search  handleChange={handleChange}/>
+                <Search handleChange={handleChange} filter={filter} />
                 <OffCanvas />
             </div>
             <ul className="flex grid grid-cols-4 gap-x-10 gap-y-10">

@@ -1,26 +1,39 @@
 import React, {useState} from 'react'
-import NavBarLayout from '@/components/NavBarLayout'
-import Cards from '@/components/Cards'
-import Datasearch from '@/components/Datasearch'
+import dynamic from "next/dynamic"
+const NavBarLayout = dynamic(() => import ('@/components/NavBarLayout'))
+const Cards = dynamic(() => import ( '@/components/Cards'))
 
 
 
 function Dashboard({posts}:any) {
-
   const [search, setSearch] = useState('')
-  console.log(search)
+  const [data, setData] = useState(posts);
   
-  const handleChange = (e:any) => {
-      setSearch(e.target.value)
-  } 
+const filter = (search:any) => {
+    const filterResult = posts.filter((element:any) => {
+      return search.toString().toLowerCase() === '' ? element : element.title.toLowerCase().includes(search)
+    })
+  setData(filterResult)
 
- 
+      console.log(data)
+} 
+
+const handleChange = (e:any) => {
+  setSearch(e.target.value)
+  filter(e.target.value)
+  
+  
+}
 
  
   return (
     <div className='container-fluid'>     
-        <NavBarLayout handleChange={handleChange} />
-        <Cards data={posts}/>
+        <NavBarLayout handleChange={handleChange} filter={filter} />
+        
+        <Cards data={data}/>
+
+
+      
     </div>
   )
 }
