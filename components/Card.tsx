@@ -23,8 +23,8 @@ function Card({
 
   return (
     <>
-      <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 object-fill">
-        <Image src={image} className="object-contain h-40 w-96" width={100} height={50} alt="productos" />
+      <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-blue-700 object-fill hover:scale-125 duration-150">
+        <Image src={image} className="object-contain h-52 w-96" width={100} height={50} alt="productos" />
 
         <div className="p-5">
           <h5 className="mb-2 text-2xl font-bold text-gray-900 truncate">

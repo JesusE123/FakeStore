@@ -21,7 +21,7 @@ const OffCanvas = () => {
     return (
         <div>
 
-            <Cart handleShow={handleShow} />
+            <Cart handleShow={handleShow} items={items}/>
 
             <Offcanvas show={show} onHide={handleClose} placement='end'>
                 <Offcanvas.Header closeButton>
