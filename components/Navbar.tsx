@@ -11,7 +11,7 @@ function Navbar({ handleChange, filter }:any) {
                 <Search handleChange={handleChange} filter={filter} />
                 <OffCanvas />
             </div>
-            <ul className="flex grid grid-cols-4 gap-x-10 gap-y-10">
+            <ul className="flex grid grid-cols-5 gap-x-10 gap-y-10">
                 <li className="flex-1">
                     <Link href="/electronics "className="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white">Electronica</Link>
                     
@@ -24,6 +24,9 @@ function Navbar({ handleChange, filter }:any) {
                 </li>
                 <li className="text-center">
                     <a className="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white">Mujeres</a>
+                </li>
+                <li className="text-center">
+                    <Link href="/dashboard" className='text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white'>Principal</Link>
                 </li>
             </ul>
         </div>

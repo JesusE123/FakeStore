@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import dynamic from "next/dynamic"
-
 const NavBarLayout = dynamic(() => import ('@/components/NavBarLayout'))
 const Cards = dynamic(() => import ( '@/components/Cards'))
 
