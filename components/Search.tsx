@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-function Search({handleChange, filter}:any) {
+function Search({handleChange}:any) {
 
   return (
     <div>
@@ -12,7 +12,7 @@ function Search({handleChange, filter}:any) {
           aria-label="Large"
           aria-describedby="inputGroup-sizing-sm"
          onChange={handleChange}
-         onClick={filter}
+         
           
         />
       </InputGroup>
