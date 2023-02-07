@@ -3,8 +3,6 @@ import dynamic from "next/dynamic"
 const NavBarLayout = dynamic(() => import ('@/components/NavBarLayout'))
 const Cards = dynamic(() => import ( '@/components/Cards'))
 
-
-
 function Dashboard({posts}:any) {
   const [search, setSearch] = useState('')
   const [data, setData] = useState(posts);
