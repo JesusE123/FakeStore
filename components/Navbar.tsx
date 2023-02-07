@@ -17,7 +17,7 @@ function Navbar({ handleChange, filter }:any) {
                     
                 </li>
                 <li className="flex-1">
-                    <a className="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white">Joyeria</a>
+                    <Link href="/jewels" className="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white">Joyeria</Link>
                 </li>
                 <li className="text-center">
                     <a className="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white">Hombres</a>
