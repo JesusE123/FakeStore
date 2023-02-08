@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import dynamic from "next/dynamic"
-const NavBarLayout = dynamic(() => import ('@/components/NavBarLayout'))
+import Menu from '@/components/Menu'
+const Layout = dynamic(() => import ('@/components/Layout'))
 const Cards = dynamic(() => import ( '@/components/Cards'))
 
 function Category({posts}:any) {
@@ -26,12 +27,10 @@ const handleChange = (e:any) => {
  
   return (
     <div className='container-fluid'>     
-        <NavBarLayout  handleChange={handleChange}/>
-       
+        <Layout>
+        <Menu />
         <Cards data={data}/>
-
-
-      
+        </Layout>
     </div>
   )
 }

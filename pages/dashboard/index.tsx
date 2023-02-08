@@ -1,15 +1,15 @@
 import React, {useState} from 'react'
 import dynamic from "next/dynamic"
-import {useContext} from "react"
-import { CategoryContext } from '@/context/categoryContext'
-const NavBarLayout = dynamic(() => import ('@/components/NavBarLayout'))
+
+import Menu from '@/components/Menu'
+const Layout = dynamic(() => import ('@/components/Layout'))
 const Cards = dynamic(() => import ( '@/components/Cards'))
 
 function Dashboard({posts}:any) {
   const [search, setSearch] = useState('')
   const [data, setData] = useState(posts);
-  const {datos} = useContext(CategoryContext)
-  console.log(datos)
+  
+  
   
 
   const filter = (search:any) => {
@@ -27,15 +27,12 @@ const handleChange = (e:any) => {
   
   
 }
- 
   return (
     <div className='container-fluid'>     
-        <NavBarLayout  handleChange={handleChange}/>
-       
+        <Layout>
+        <Menu/>
         <Cards data={data}/>
-
-
-      
+        </Layout> 
     </div>
   )
 }
