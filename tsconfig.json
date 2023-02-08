@@ -19,6 +19,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Card.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Card.js", "context/categoryContext.js"],
   "exclude": ["node_modules"]
 }

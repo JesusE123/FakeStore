@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Link from 'next/link'
 import OffCanvas from './OffCanvas'
 import Search from './Search'
-function Navbar({ handleChange, filter, category}:any) {
+function Navbar({ handleChange, filter}:any) {
   
     return (
         <div>
@@ -13,10 +13,10 @@ function Navbar({ handleChange, filter, category}:any) {
             </div>
             <ul className="flex grid grid-cols-5 gap-x-10 gap-y-10">
                 <li className="flex-1">
-                    <Link href={`/categories/${category}`} className="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white">Electronica</Link>
+                    <Link href={`/dashboard/electronics`} className="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white">Electronica</Link>
                 </li>
                 <li className="flex-1">
-                    <Link href="/jewels" className="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white">Joyeria</Link>
+                    <Link href={"/dashboard/jewelery"} className="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white">Joyeria</Link>
                 </li>
                 <li className="text-center">
                     <a className="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white">Hombres</a>

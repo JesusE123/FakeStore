@@ -1,13 +1,18 @@
 import React, {useState} from 'react'
 import dynamic from "next/dynamic"
+import {useContext} from "react"
+import { CategoryContext } from '@/context/categoryContext'
 const NavBarLayout = dynamic(() => import ('@/components/NavBarLayout'))
 const Cards = dynamic(() => import ( '@/components/Cards'))
 
 function Dashboard({posts}:any) {
   const [search, setSearch] = useState('')
   const [data, setData] = useState(posts);
+  const {datos} = useContext(CategoryContext)
+  console.log(datos)
   
-const filter = (search:any) => {
+
+  const filter = (search:any) => {
     const filterResult = posts.filter((element:any) => {
       return search.toString().toLowerCase() === '' ? element : element.title.toLowerCase().includes(search)
     })
@@ -22,11 +27,10 @@ const handleChange = (e:any) => {
   
   
 }
-
  
   return (
     <div className='container-fluid'>     
-        <NavBarLayout handleChange={handleChange} filter={filter} />
+        <NavBarLayout  handleChange={handleChange}/>
        
         <Cards data={data}/>
 
@@ -36,7 +40,9 @@ const handleChange = (e:any) => {
   )
 }
 
-export async function getStaticProps() {
+
+
+export async function getStaticProps(context:any) {
    const res = await fetch('https://fakestoreapi.com/products')
    const posts = await res.json();
 
