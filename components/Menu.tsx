@@ -5,10 +5,10 @@ import { CategoryContext } from '@/context/categoryContext'
 
 const Menu = () => {
     const {data} = useContext(CategoryContext)
-    console.log(data)
+   
   return (
     <div className='grid grid-cols-4 gap-4'>
-        {data.map((element:any, index:any) => {
+        {data?.map((element:any, index:any) => {
             return (
                 <div key={index} className=''>
                     <ul className=''>

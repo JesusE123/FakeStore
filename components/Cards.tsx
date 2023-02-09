@@ -3,9 +3,12 @@ import { useCart } from 'react-use-cart'
 import Swal from 'sweetalert2'
 import Card from './Card'
 import Search from './Search'
+import { useContext } from 'react'
+import { DataContext } from '@/context/dataContext'
 
 
-const Cards = ({data}: any) => {
+const Cards = ({data}:any) => {
+    const {posts} = useContext(DataContext)
   
     const { addItem }: any = useCart()
     
@@ -15,7 +18,7 @@ const Cards = ({data}: any) => {
         <div className='grid grid-cols-4 gap-4'>
            
             {
-                data.map((element:any, index:any) => {
+                posts?.map((element:any, index:any) => {
                     return (
                         <Card 
                         key={index}

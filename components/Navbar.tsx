@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Link from 'next/link'
 import OffCanvas from './OffCanvas'
 import Search from './Search'
-function Navbar({ handleChange, filter}:any) {
+function Navbar() {
   
     return (
         <div>
@@ -10,7 +10,7 @@ function Navbar({ handleChange, filter}:any) {
                 
                     <Link href='/dashboard' className='font-bold text-3xl text-black mx-3'> Bienvenido a Fake Store</Link>
                
-                <Search handleChange={handleChange} filter={filter} />
+                <Search  />
                 <OffCanvas />
             </div>
         </div>

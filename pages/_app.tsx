@@ -7,6 +7,7 @@ import { Roboto } from '@next/font/google'
 import Router from 'next/router'
 import Loading from '@/components/Loading'
 import { CategoryProvider } from '@/context/categoryContext'
+import { DataProvider } from '@/context/dataContext'
 
 
 
@@ -29,6 +30,7 @@ Router.events.on("routeChangeComplete" , (url) => {
     
     <>
     {!loading ? (
+      <DataProvider>
     <CategoryProvider>
     <CartProvider>
       <main className={roboto.className}>
@@ -36,6 +38,7 @@ Router.events.on("routeChangeComplete" , (url) => {
       </main>
     </CartProvider>
     </CategoryProvider>
+    </DataProvider>
     
     ) : (<Loading />)
 }

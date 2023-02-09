@@ -5,31 +5,12 @@ const Layout = dynamic(() => import ('@/components/Layout'))
 const Cards = dynamic(() => import ( '@/components/Cards'))
 
 function Category({posts}:any) {
-  const [search, setSearch] = useState('')
-  const [data, setData] = useState(posts);
-  
-  const filter = (search:any) => {
-    const filterResult = posts.filter((element:any) => {
-      return search.toString().toLowerCase() === '' ? element : element.title.toLowerCase().includes(search)
-    })
-  setData(filterResult)
-
-      console.log(data)
-} 
-
-const handleChange = (e:any) => {
-  setSearch(e.target.value)
-  filter(e.target.value)
-  
-  
-}
-
- 
+console.log(posts)
   return (
     <div className='container-fluid'>     
         <Layout>
         <Menu />
-        <Cards data={data}/>
+        <Cards data={posts}/>
         </Layout>
     </div>
   )
