@@ -5,15 +5,14 @@ import {useContext} from 'react'
 import { DataContext } from '@/context/dataContext';
 
 function Search() {
-  const {handleFilterData} = useContext(DataContext);
+  const {state,dispatch} = useContext(DataContext);
   const [searchTerm, setSearchTerm] = useState('');
+      const handleFilter = (e:any) => {
+        const type = e.target.value;
+        dispatch({type: 'FILTER', payload: type})
+      }
+  
 
-  console.log(searchTerm)
-
-  const handleChange = (e:any) => {
-    setSearchTerm(e.target.value)
-    handleFilterData(e.target.value)
-  }
   return (
     <div>
      <InputGroup size="lg">
@@ -21,8 +20,8 @@ function Search() {
         <Form.Control
           aria-label="Large"
           aria-describedby="inputGroup-sizing-sm"
-         onChange={handleChange}
-         value={searchTerm}
+         onChange={handleFilter}
+        
          
          
           

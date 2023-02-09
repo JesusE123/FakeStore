@@ -10,7 +10,7 @@ console.log(posts)
     <div className='container-fluid'>     
         <Layout>
         <Menu />
-        <Cards data={posts}/>
+        <Cards />
         </Layout>
     </div>
   )

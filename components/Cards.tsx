@@ -7,8 +7,8 @@ import { useContext } from 'react'
 import { DataContext } from '@/context/dataContext'
 
 
-const Cards = ({data}:any) => {
-    const {posts} = useContext(DataContext)
+const Cards = () => {
+    const {state,dispatch} = useContext(DataContext)
   
     const { addItem }: any = useCart()
     
@@ -18,7 +18,7 @@ const Cards = ({data}:any) => {
         <div className='grid grid-cols-4 gap-4'>
            
             {
-                posts?.map((element:any, index:any) => {
+                state.filteredData.map((element:any, index:any) => {
                     return (
                         <Card 
                         key={index}

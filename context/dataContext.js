@@ -1,28 +1,49 @@
 
-import { createContext, useState } from "react";
+import { createContext, useState, useReducer, useEffect } from "react";
 import useSWR from "swr"
 
+
+const initialState = {
+  data: [],
+  filteredData: []
+}
+
+const filterReducer = (state, action) => {
+switch(action.type){
+  case 'FETCH_SUCCESS':
+    return {
+      ...state,
+      data: action.payload,
+      filteredData:action.payload,
+    };
+    case 'FILTER':
+      return {
+        ...state,
+        filteredData: state.data.filter(item => item.title.toLowerCase().includes(action.payload.toLowerCase())),
+      };
+      default:
+        return state;
+}
+}
 export const DataContext = createContext();
-const fetcher = url => fetch(url).then(res => res.json())
+
 export const DataProvider = ({ children }) => {
-  const {data, error} = useSWR('https://fakestoreapi.com/products', fetcher)
-  const [posts, setPosts] = useState(data)
-
-
-  const handleFilterData = (searchTerm) => {
-    if(searchTerm === '') {
-      setPosts(data)
-    } else {
-      const filteredData = posts.filter((element) => {
-        return searchTerm.toLowerCase() === '' ? element : element.title.toLowerCase().includes(searchTerm)
-      })
-      setPosts(filteredData)
-      
+  const [state, dispatch] = useReducer(filterReducer, initialState)
+ useEffect(()=> {
+  const fetchData = async () => {
+    try {
+      const response = await fetch('https://fakestoreapi.com/products');
+      const data = await response.json();
+      dispatch({type: 'FETCH_SUCCESS', payload:data})
+    } catch (error) {
+      console.log(error)
     }
-
   }
+  fetchData();
+ },[])
+
 
   return (
-  <DataContext.Provider value={{posts, handleFilterData}}>{children}</DataContext.Provider>
+  <DataContext.Provider value={{state, dispatch}}>{children}</DataContext.Provider>
   )
 };
