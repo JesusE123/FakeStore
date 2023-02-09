@@ -1,55 +1,36 @@
-import React, {useState} from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import dynamic from "next/dynamic"
-import {useContext} from "react"
-import { DataContext } from '@/context/dataContext'
 import Menu from '@/components/Menu'
-const Layout = dynamic(() => import ('@/components/Layout'))
-const Cards = dynamic(() => import ( '@/components/Cards'))
+import { SearchContext } from '@/context/searchContext'
+const Layout = dynamic(() => import('@/components/Layout'))
+const Cards = dynamic(() => import('@/components/Cards'))
 
-function Dashboard({posts}:any) {
 
-  const [search, setSearch] = useState('')
-  const [data, setData] = useState(posts);
-  
-  
-  
+function Dashboard({ posts }: any) {
+  const { data, dispatch } = useContext(SearchContext)
 
-  const filter = (search:any) => {
-    const filterResult = posts.filter((element:any) => {
-      return search.toString().toLowerCase() === '' ? element : element.title.toLowerCase().includes(search)
-    })
-  setData(filterResult)
-
-      console.log(data)
-} 
-
-const handleChange = (e:any) => {
-  setSearch(e.target.value)
-  filter(e.target.value)
-  
-  
-}
+  useEffect(() => {
+    dispatch({type: 'SET_DATA' , data: posts})
+  }, [posts, dispatch])
   return (
-    <div className='container-fluid'>     
-        <Layout>
-        <Menu/>
-        <Cards data={data}/>
-        </Layout> 
+    <div className='container-fluid'>
+      <Layout>
+        <Menu />
+        <Cards posts={data?.data || []} />
+      </Layout>
     </div>
   )
 }
 
+export async function getStaticProps() {
+  const res = await fetch('https://fakestoreapi.com/products');
+  const posts = await res.json();
 
-
-export async function getStaticProps(context:any) {
-   const res = await fetch('https://fakestoreapi.com/products')
-   const posts = await res.json();
-
-   return {
-    props:{
+  return {
+    props: {
       posts
     }
-   }
-    
+  }
 }
+
 export default Dashboard

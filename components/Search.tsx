@@ -1,8 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+import { SearchContext } from '@/context/searchContext';
 
-function Search({handleChange}:any) {
+
+function Search() {
+ 
+  const { data, dispatch } = useContext(SearchContext)
+  const handleChange = (e:any) => {
+    const type = e.target.value
+    dispatch({type: 'FILTER_DATA', query: type})
+  }
 
   return (
     <div>
@@ -11,8 +19,7 @@ function Search({handleChange}:any) {
         <Form.Control
           aria-label="Large"
           aria-describedby="inputGroup-sizing-sm"
-         onChange={handleChange}
-         
+          onChange={handleChange}
           
         />
       </InputGroup>

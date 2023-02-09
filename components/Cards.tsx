@@ -5,17 +5,16 @@ import Card from './Card'
 import Search from './Search'
 
 
-const Cards = ({data}: any) => {
-  
-    const { addItem }: any = useCart()
+const Cards = ({posts}:any) => {
     
+    const { addItem }: any = useCart()
     return (
         <>
         
         <div className='grid grid-cols-4 gap-4'>
            
             {
-                data.map((element:any, index:any) => {
+              posts.map((element:any, index:any) => {
                     return (
                         <Card 
                         key={index}
