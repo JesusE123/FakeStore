@@ -1,11 +1,13 @@
 import React, {useState} from 'react'
 import dynamic from "next/dynamic"
-
+import {useContext} from "react"
+import { DataContext } from '@/context/dataContext'
 import Menu from '@/components/Menu'
 const Layout = dynamic(() => import ('@/components/Layout'))
 const Cards = dynamic(() => import ( '@/components/Cards'))
 
 function Dashboard({posts}:any) {
+
   const [search, setSearch] = useState('')
   const [data, setData] = useState(posts);
   
