@@ -1,16 +1,21 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import dynamic from "next/dynamic"
 import Menu from '@/components/Menu'
-const Layout = dynamic(() => import ('@/components/Layout'))
-const Cards = dynamic(() => import ( '@/components/Cards'))
+import { SearchContext } from '@/context/searchContext'
+import Layout from '@/components/Layout'
+import Cards from '@/components/Cards'
 
 function Category({posts}:any) {
-console.log(posts)
+  const { data, dispatch } = useContext(SearchContext)
+
+  useEffect(() => {
+    dispatch({type: 'SET_DATA' , data: posts})
+  }, [posts, dispatch])
   return (
     <div className='container-fluid'>     
         <Layout>
         <Menu />
-        <Cards />
+        <Cards posts={data?.data || []}/>
         </Layout>
     </div>
   )
