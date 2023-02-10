@@ -28,7 +28,9 @@ switch(action.type){
 export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
+  
   const [state, dispatch] = useReducer(filterReducer, initialState)
+  
  useEffect(()=> {
   const fetchData = async () => {
     try {
