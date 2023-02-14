@@ -19,8 +19,7 @@ export default function loginHandler(req,res) {
         return res.json('login succesfully')
    }
 
-   return res.status(401).json({error: 'invalid mail or password'})
-
+   return res.status(401).json({error: 'ss'})
    
 }
 

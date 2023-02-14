@@ -11,6 +11,7 @@ const roboto = Roboto({
 
 export default function Home() {
   const router = useRouter()
+  const [error, setError] = useState(false)
 const [user, setUser] = useState({
   user: '',
   password: ''
@@ -26,11 +27,20 @@ function handleChange(e:any) {
 
 async function handleSubmit(e:any) {
     e.preventDefault();
-   const response =  await axios.post('/api/auth/auth', user)
-   .then(res => {
-    setUser(user)
-    router.push('/dashboard')
-   })
+   const response =  await axios.post('/api/auth/auth', user).then((res => {
+    if(user.user && user.password ) {
+      alert('registro exitoso')
+      console.log(user)
+    } else {
+      alert('no')
+      setError(true)
+    }
+   }))
+   
+   
+    
+    
+   
    
 }
 
@@ -57,6 +67,7 @@ async function handleSubmit(e:any) {
              
               />
 						</div>
+            
 						<div className="relative">
 							<input 
               name="password" 
@@ -73,6 +84,7 @@ async function handleSubmit(e:any) {
 							<button className="bg-blue-500 text-white rounded-md px-2 py-1 mt-5">Submit</button>
 						</div>
 					</div>
+          {error && <p style={{ color: 'red' }}>Credenciales incorrectas. Inténtelo de nuevo.</p>}
           </form>
 				</div>
 			</div>
