@@ -35,8 +35,6 @@ async function handleSubmit(e:any) {
     .catch(error => {
       setError(true)
     });
-   
-   
 }
 
   return (
