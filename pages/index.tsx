@@ -27,19 +27,14 @@ function handleChange(e:any) {
 
 async function handleSubmit(e:any) {
     e.preventDefault();
-   const response =  await axios.post('/api/auth/auth', user).then((res => {
-    if(user.user && user.password ) {
-      alert('registro exitoso')
-      console.log(user)
-    } else {
-      alert('no')
+    const response =  await axios.post('/api/auth/auth', user).
+    then(res => {
+      setUser(res.data)
+      router.push('/dashboard')
+    })
+    .catch(error => {
       setError(true)
-    }
-   }))
-   
-   
-    
-    
+    });
    
    
 }
@@ -48,7 +43,7 @@ async function handleSubmit(e:any) {
     <>
 	<div className="relative py-3 sm:max-w-xl sm:mx-auto flex justify-center items-center h-screen">
 		<div
-			className="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+			className="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-5 sm:rounded-3xl">
 		</div>
 		<div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
 			<div className="max-w-md mx-auto">
@@ -84,7 +79,7 @@ async function handleSubmit(e:any) {
 							<button className="bg-blue-500 text-white rounded-md px-2 py-1 mt-5">Submit</button>
 						</div>
 					</div>
-          {error && <p style={{ color: 'red' }}>Credenciales incorrectas. Inténtelo de nuevo.</p>}
+          {error && <span style={{ color: 'red'}}>Usuario o Contraseña incorrectas.</span>}
           </form>
 				</div>
 			</div>
