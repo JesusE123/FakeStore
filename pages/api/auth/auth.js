@@ -4,7 +4,7 @@ const errorMesage = 'Credenciales incorrectas'
 
 export default function loginHandler(req,res) {
    const  {user, password} = req.body;
-
+    
    if(user === 'admin' && password === 'admin123') {
         const token = jwt.sign({
             user: 'admin',
@@ -20,5 +20,7 @@ export default function loginHandler(req,res) {
         return res.json('login succesfully')
    } 
 
-   return res.status(401).json({error: 'invalid mail or password'})
+   return res.status(401).json({error: 'ss'})
+   
 }
+

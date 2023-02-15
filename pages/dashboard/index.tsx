@@ -2,8 +2,8 @@ import React, { useState, useContext, useEffect } from 'react'
 import dynamic from "next/dynamic"
 import Menu from '@/components/Menu'
 import { SearchContext } from '@/context/searchContext'
-const Layout = dynamic(() => import('@/components/Layout'))
-const Cards = dynamic(() => import('@/components/Cards'))
+import Layout from '@/components/Layout'
+import Cards from '@/components/Cards'
 
 
 function Dashboard({ posts }: any) {

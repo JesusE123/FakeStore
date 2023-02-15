@@ -1,14 +1,13 @@
-import React, {useState} from 'react'
-import Navbar from './Navbar'
+import React, { useState } from "react";
+import Navbar from "./Navbar";
 
-function Layout({ children}: any) {
-    
-    return (
-        <>
-            <Navbar />
-            <main>{children}</main>
-        </>
-    )
+function Layout({ children }: any) {
+  return (
+    <>
+      <Navbar />
+      <main>{children}</main>
+    </>
+  );
 }
 
-export default Layout
+export default Layout;
