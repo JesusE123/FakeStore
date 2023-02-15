@@ -1,9 +1,8 @@
-import Head from 'next/head'
 import axios from 'axios'
 import { Roboto } from '@next/font/google'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import {useForm} from 'react-hook-form'
+
 
 const roboto = Roboto({
   weight: '400',
@@ -11,7 +10,6 @@ const roboto = Roboto({
 })
 
 export default function Home() {
-  const {formState:{errors}} = useForm()
   const router = useRouter()
   const [error, setError] = useState(false)
 const [user, setUser] = useState({

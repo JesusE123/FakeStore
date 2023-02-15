@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useCart } from "react-use-cart";
-import Swal from "sweetalert2";
 import Card from "./Card";
-import Search from "./Search";
+
 
 const Cards = ({ posts }: any) => {
   const { addItem }: any = useCart();
