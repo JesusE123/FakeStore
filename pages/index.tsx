@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Roboto } from '@next/font/google'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import {useForm} from 'react-hook-form'
 
 const roboto = Roboto({
   weight: '400',
@@ -10,6 +11,7 @@ const roboto = Roboto({
 })
 
 export default function Home() {
+  const {formState:{errors}} = useForm()
   const router = useRouter()
 const [user, setUser] = useState({
   user: '',
@@ -30,6 +32,8 @@ async function handleSubmit(e:any) {
    .then(res => {
     setUser(user)
     router.push('/dashboard')
+   }).then(error => {
+    console.log(error)
    })
    
 }
@@ -54,9 +58,11 @@ async function handleSubmit(e:any) {
               className="h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" 
               placeholder="username" 
               onChange={handleChange}
-             
+              required
               />
 						</div>
+           {errors.user && <p>text is requerido</p>}
+
 						<div className="relative">
 							<input 
               name="password" 

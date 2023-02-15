@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import {serialize} from 'cookie'
+const errorMesage = 'Credenciales incorrectas'
 
 export default function loginHandler(req,res) {
    const  {user, password} = req.body;
@@ -17,7 +18,7 @@ export default function loginHandler(req,res) {
         })
         res.setHeader('Set-Cookie', serialized)
         return res.json('login succesfully')
-   }
+   } 
 
    return res.status(401).json({error: 'invalid mail or password'})
 }
