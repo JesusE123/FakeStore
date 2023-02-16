@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useCart } from "react-use-cart";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Cart from "./Cart";
 import Image from "next/image";
 const OffCanvas = () => {
   const [show, setShow] = useState(false);
+  const [initialRenderComplete, setInitialRenderComplete] = useState(false);
   const {
     isEmpty,
     totalUniqueItems,
@@ -15,8 +16,17 @@ const OffCanvas = () => {
     removeItem,
     emptyCart,
   } = useCart();
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  useEffect(() => {
+    setInitialRenderComplete(true);
+  }, []);
+
+  if (!initialRenderComplete) {
+    return null;
+  }
 
   return (
     <div>
@@ -40,7 +50,7 @@ const OffCanvas = () => {
           )}
           <table className="table table-light table-hover m-0">
             <tbody>
-              {items.map((item, index) => {
+              {items?.map((item, index) => {
                 return (
                   <tr key={index}>
                     <td>

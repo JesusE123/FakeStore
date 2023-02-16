@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useCart } from "react-use-cart";
-import Swal from "sweetalert2";
+
+
 import Card from "./Card";
-import Search from "./Search";
+
 
 const Cards = ({ posts }: any) => {
-  const { addItem }: any = useCart();
+
   return (
     <>
       <div className="grid grid-cols-4 gap-4">
@@ -18,7 +18,7 @@ const Cards = ({ posts }: any) => {
               description={element.description}
               element={element}
               image={element.image}
-              additem={addItem}
+             
             />
           );
         })}

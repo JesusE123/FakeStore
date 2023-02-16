@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Swal from "sweetalert2";
+import { useCart } from "react-use-cart";
 
 function Card({
   title,
@@ -9,10 +10,10 @@ function Card({
   element,
   image,
   index,
-  additem,
 }: any) {
+  const { addItem }: any = useCart();
   const addToCart = () => {
-    additem(element);
+    addItem(element);
     Swal.fire({
       icon: "success",
       title: "Se ha agreado correctamente",
