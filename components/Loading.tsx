@@ -1,18 +1,25 @@
 import React from "react";
-import { Dna } from "react-loader-spinner";
+import { Oval } from "react-loader-spinner";
 
 const Loading = () => {
   return (
-    <div className="flex items-center justify-center h-screen">
-      <Dna
-        visible={true}
-        height="200"
-        width="200"
-        ariaLabel="dna-loading"
-        wrapperStyle={{}}
-        wrapperClass="dna-wrapper"
-      />
-    </div>
+    <div className="absolute inset-0 flex items-center justify-center">
+      
+      <Oval
+  height={80}
+  width={80}
+  color="#4826a7"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+  ariaLabel='oval-loading'
+  secondaryColor="#5142a3"
+  strokeWidth={2}
+  strokeWidthSecondary={2}
+
+/>
+      </div>
+   
   );
 };
 

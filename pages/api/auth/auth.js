@@ -20,7 +20,7 @@ export default function loginHandler(req,res) {
         return res.json('login succesfully')
    } 
 
-   return res.status(401).json({error: 'ss'})
+   return res.status(401).json({error: 'failed'})
    
 }
 
