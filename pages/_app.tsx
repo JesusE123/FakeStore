@@ -26,7 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
     Router.events.on("routeChangeComplete", (url) => {
       setLoading(false);
     });
-  },[Router])
+  },[])
   return (
     <>
       <SearchProvider>

@@ -4,15 +4,29 @@ import OffCanvas from "./OffCanvas";
 import Search from "./Search";
 import axios from "axios";
 import { useRouter } from "next/router";
+import {AiOutlinePoweroff} from "react-icons/ai"
+import Swal from "sweetalert2";
 
 
 
 function Navbar() {
   const router = useRouter()
 
-  const Logout = async () => {
-    const res = await axios.post('/api/auth/logout')
-    router.push('/')
+  const Logout =  () => {
+    Swal.fire({
+      title: 'Desea cerrar sesion?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Cerrar sesion'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const res = axios.post('/api/auth/logout')
+        router.push('/')
+      }
+    })
+    
   }
   return (
     <div>
@@ -22,8 +36,10 @@ function Navbar() {
           Bienvenido a Fake Store
         </Link>
         <Search />
-        <div>
-          <button className=" bg-red-500 rounded w-auto text-lg font-bold px-1 font-serif hover:text-white" onClick={() => Logout()}>Salir</button>
+        <div className="flex flex-row-reverse">
+          <button className="rounded-full text-lg font-bold px-1 font-serif hover:text-white d-flex py-2 text-red-600 mt-2 mx-2" onClick={() => Logout()}>
+            <AiOutlinePoweroff size={30}/>
+          </button>
           <OffCanvas />
         </div>
       </div>
